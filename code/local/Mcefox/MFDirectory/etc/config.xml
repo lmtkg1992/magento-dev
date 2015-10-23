@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mcefox_MFDirectory>
+            <version>0.1.0</version>
+        </Mcefox_MFDirectory>
+    </modules>
+    <global>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <mcefox_mfdirectory_model_observer>
+                        <type>singleton</type>
+                        <class>Mcefox_MFDirectory_Model_Observer</class>
+                        <method>checkForConfigRequest</method>
+                    </mcefox_mfdirectory_model_observer>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
+    <frontend>
+        <routers>
+            <mfdirectory>
+                <use>standard</use>
+                <args>
+                    <module>Mcefox_MFDirectory</module>
+                    <frontName>directory</frontName>
+                </args>
+            </mfdirectory>
+        </routers>
+    </frontend>
+</config>

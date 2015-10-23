@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Mcefox_MFDirectory>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mcefox_MFDirectory>
+    </modules>
+</config>   
