@@ -145,6 +145,7 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             $this->_redirect('*/*/');
             return;
         }
+
         $session = $this->_getSession();
 
         if ($this->getRequest()->isPost()) {
@@ -353,7 +354,7 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
     {
         $customer = $this->_getFromRegistry('current_customer');
         if (!$customer) {
-            $customer = $this->_getModel('customer/customer')->setId(null);
+            $customer = $this->_getModel('cusotmer/customer')->setId(null);
         }
         if ($this->getRequest()->getParam('is_subscribed', false)) {
             $customer->setIsSubscribed(1);

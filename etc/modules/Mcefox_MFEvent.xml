@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Mcefox_MFEvent>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mcefox_MFEvent>
+    </modules>
+</config>

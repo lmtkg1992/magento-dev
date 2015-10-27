@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Mcefox_MFDirectory>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Mcefox_MFDirectory>
     </modules>
     <global>
@@ -17,6 +17,43 @@
                 </observers>
             </controller_front_init_routers>
         </events>
+        <models>
+            <mfdirectory>
+                <class>Mcefox_MFDirectory_Model</class>
+                <resourceModel>mfdirectory_mysql4</resourceModel>
+            </mfdirectory>
+            <mfdirectory_mysql4>
+                <class>Mcefox_MFDirectory_Model_Mysql4</class>
+                <entities>
+                    <mfdirectory>
+                        <table>mfdirectory</table>
+                    </mfdirectory>
+                </entities>
+            </mfdirectory_mysql4>
+        </models>
+
+        <resources>
+            <mfdirectory_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mfdirectory_write>
+            <mfdirectory_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mfdirectory_read>
+
+            <mfdirectory_setup>
+                <setup>
+                    <module>Mcefox_MFDirectory</module>
+                    <class>Mcefox_MFDirectory_Model_Resource_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mfdirectory_setup>
+        </resources>
     </global>
     <frontend>
         <routers>

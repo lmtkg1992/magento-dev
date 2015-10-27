@@ -115,9 +115,6 @@ abstract class Mage_Core_Helper_Abstract
     }
 
     /**
-     * Retrieve helper module name
-     *
-     * @return string
      */
     protected function _getModuleName()
     {

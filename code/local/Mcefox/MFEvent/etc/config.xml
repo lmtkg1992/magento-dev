@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mcefox_MFEvent>
+            <version>0.1.0</version>
+        </Mcefox_MFEvent>
+    </modules>
+    <frontend>
+        <routers>
+            <mfevent>
+                <use>standard</use>
+                <args>
+                    <module>Mcefox_MFEvent</module>
+                    <frontName>event</frontName>
+                </args>
+            </mfevent>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+            <mfevent>
+                <class>Mcefox_MFEvent_Model</class>
+                <resourceModel>mfevent_resource_eav_mysql4</resourceModel>
+            </mfevent>
+            <mfevent_resource_eav_mysql4>
+                <class>Mcefox_MFEvent_Model_Resource_Eav_Mysql4</class>
+                <entities>
+                    <eavfevent>
+                        <table>eavfevent</table>
+                    </eavfevent>
+                </entities>
+            </mfevent_resource_eav_mysql4>
+        </models>
+        <resources>
+            <mfevent_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mfevent_write>
+
+            <mfevent_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mfevent_read>
+
+            <mfevent_setup>
+                <setup>
+                    <module>Mcefox_MFEvent</module>
+                    <class>Mcefox_MFEvent_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mfevent_setup>
+
+        </resources>
+        <helpers>
+            <mfevent>
+                <class>Mcefox_MFEvent_Helper</class>
+            </mfevent>
+        </helpers>
+    </global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mfeventconfig>
+                                            <title>Event Module Config Options</title>
+                                        </mfeventconfig>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>
