@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <BC_BCSearch>
+            <active>true</active>
+            <codePool>local</codePool>
+        </BC_BCSearch>
+    </modules>
+</config>

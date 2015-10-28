@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/bcsearch.css</stylesheet></action>
+            <action method="addJs"><script>bcsearch/bcsearch.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/bcsearch.js</name></action>
+        </reference>
+    </default>
+</layout>

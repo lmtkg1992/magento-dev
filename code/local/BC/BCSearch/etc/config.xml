@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BC_BCSearch>
+            <version>0.1.0</version>
+        </BC_BCSearch>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <bcsearch module="BC_BCSearch">
+                    <file>bcsearch.xml</file>
+                </bcsearch>
+            </updates>
+        </layout>
+    </frontend>
+</config>
