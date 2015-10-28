@@ -2,20 +2,31 @@
 class Mcefox_MFEvent_IndexController extends Mage_Core_Controller_Front_Action{
     public function indexAction()
     {
-        $feventmodel = Mage::getModel('mfevent/eavfevent');
+        $obj1 = new Varien_Object();
+        $obj1->setName('A');
+        $obj1->setAge(3);
 
-        $feventmodel->load(1);
+        $obj2 = new Varien_Object();
+        $obj2->setName('B');
+        $obj2->setAge(4);
 
-       // $config = Mage::getStoreConfig('mfeventconfig/messages/number_event_on_block');
+        $obj3 = new Varien_Object();
+        $obj3->setName('C');
+        $obj3->setAge(5);
 
-        /*echo '<pre>';
-        print_r($config);
-        die;*/
 
-        /*echo '<pre>';
-        print_r($feventmodel->getData());
-        die;*/
-        echo 'Hello Index!';
+        $collections = new Varien_Data_Collection();
+        $collections->addItem($obj1)->addItem($obj2)->addItem($obj3);
+
+        $collection_of_products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('meta_title')->addAttributeToSelect('price')->addFieldToFilter('sku',array(array('like'=>'%car1%'),array('like'=>'%car2%')))->addFieldToFilter('price',array('lt'=>100)) ;
+        echo '<pre>';
+        foreach($collection_of_products as $product){
+            print_r($product->getName());
+        }
+
+
+       // var_dump((string)Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('meta_title')->addAttributeToSelect('price')->addFieldToFilter('sku',array(array('like'=>'%car1%'),array('like'=>'%car2%')))->addFieldToFilter('price',array('lt'=>100))->getSelect());
+        die;
     }
 
     public function viewConfigSystemAction(){

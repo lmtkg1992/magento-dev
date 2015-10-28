@@ -31,5 +31,8 @@ class Mcefox_MFDirectory_Model_Observer {
         die(Mage::app()->getConfig()->getNode()->asXML());
     }
 
-
+    public function overwrittenPreDispatch(Varien_Event_Observer $observer) {
+        Mage::log("overwritePreDispatch",null,"overwiteobserve.log");
+        // noua logica din observer
+    }
 }

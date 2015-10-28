@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mcefox_AdminNotification>
+            <version>0.0.1</version>
+        </Mcefox_AdminNotification>
+    </modules>
+    <global>
+        <models>
+            <mcefox_adminnotification>
+                <class>Mcefox_AdminNotification_Model</class>
+            </mcefox_adminnotification>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <adminnotification>
+                        <class>mcefox_adminnotification/observer</class>
+                        <method>overwrittenPreDispatch</method>
+                    </adminnotification>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </adminhtml>
+</config>
