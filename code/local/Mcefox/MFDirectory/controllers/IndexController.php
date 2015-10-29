@@ -2,8 +2,28 @@
 class Mcefox_MFDirectory_IndexController extends Mage_Core_Controller_Front_Action {
     public function indexAction() {
         //echo 'Hello Index!';
-        $this->loadLayout();
-        $this->renderLayout();
+       /* $this->loadLayout();
+        $this->renderLayout();*/
+
+        //$attribute = Mage::getModel('eav/entity_attribute')->loadByCode('catalog_product','name');
+        //$entityId = Mage::getSingleton('searchautocomplete/source_product_attribute')->getEntityTypeId();
+        //$tablename = Mage::getSingleton('core/resource')->getTableName('catalog/product') . '_varchar';
+        $resource = Mage::getSingleton('core/resource');
+        $db = $resource->getConnection('core_read');
+
+        $select = $db->select();
+
+        $select->distinct()
+            ->from($resource->getTableName('catalog/product') . '_varchar', 'entity_id')
+            ->where('entity_type_id=?', Mage::helper('searchautocomplete')->getEntityTypeId())
+            ->where('store_id=0')
+            ->where('attribute_id IN (' . implode(',', (array(71))) . ')');
+        $select->where('`value` LIKE "%' . addslashes('car 1') . '%"');
+        $ids = $db->fetchCol($select);
+        echo '<pre>';
+        var_dump($ids);
+        die;
+
     }
 
     public function goodbyeAction(){

@@ -123,6 +123,8 @@ class AW_Searchautocomplete_Model_Search extends Varien_Object
             return $ids;
         }
         $entityTypeId = Mage::helper('searchautocomplete')->getEntityTypeId();
+
+
         foreach ($attributes as $tableName) {
             if ($tableName != 'static') {
                 $select = $db->select();
@@ -141,8 +143,8 @@ class AW_Searchautocomplete_Model_Search extends Varien_Object
                         $select ->where('eaov.`value` LIKE "%' . addslashes($value) . '%"');
                     }
                 } else {
-                    $select
-                        ->distinct()
+
+                    $select->distinct()
                         ->from($resource->getTableName('catalog/product') . '_' . $tableName, 'entity_id')
                         ->where('entity_type_id=?', Mage::helper('searchautocomplete')->getEntityTypeId())
                         ->where('store_id=0 OR store_id=?', $storeId)
@@ -150,7 +152,9 @@ class AW_Searchautocomplete_Model_Search extends Varien_Object
                     foreach ($searchedWords as $value) {
                         $select->where('`value` LIKE "%' . addslashes($value) . '%"');
                     }
+
                 }
+
                 $ids = array_merge($ids, $db->fetchCol($select));
             }
             if ($tableName == 'static') {
@@ -191,9 +195,11 @@ class AW_Searchautocomplete_Model_Search extends Varien_Object
         $searchableAttributes = explode(',', Mage::helper('searchautocomplete/config')->getInterfaceSearchableAttributes());
         if (count($searchableAttributes) !== 0) {
             foreach ($searchableAttributes as $attributeId) {
-                $attribute = Mage::getModel('eav/entity_attribute')->load($attributeId);
+
+                //$attribute = Mage::getModel('eav/entity_attribute')->loadByCode(1,$attributeId);
+                $attribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage::helper('searchautocomplete')->getEntityTypeId(),'name');
                 if ($attribute->getId()) {
-                    $attributes[$attributeId] = $attribute->getBackendType();
+                    $attributes[$attribute->getId()] = $attribute->getBackendType();
                 }
             }
         }
