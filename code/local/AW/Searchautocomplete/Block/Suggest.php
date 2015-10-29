@@ -45,9 +45,6 @@ class AW_Searchautocomplete_Block_Suggest extends Mage_Catalog_Block_Product_Lis
      */
     public function getSuggests()
     {
-        Mage::log('get Suggest',null,'autocomplete.log');
-        Mage::log(Mage::helper('searchautocomplete')->getSearchedQuery(),null,'autocomplete.log');
-
         if (null === $this->_suggestItems) {
             $suggestCollection = Mage::getResourceModel('catalogsearch/query_collection')
                 ->setStoreId(Mage::app()->getStore()->getId())
